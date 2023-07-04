@@ -288,7 +288,7 @@ def populate_database(cursor, action_ids):
     for action_id in action_ids:
         cursor.execute(''' SELECT count(name) FROM sqlite_master WHERE type='table' AND name=? ''', (action_id,))
         if cursor.fetchone()[0] == 0:
-            cursor.execute("CREATE TABLE %s (token text PRIMARY KEY, username text, password_hash text, enc_key text)" % (trig_id))
+            cursor.execute("CREATE TABLE %s (token text PRIMARY KEY, username text, password_hash text, enc_key text)" % (action_id))
 
 class Server(ThreadingMixIn, HTTPServer):
     if __name__ == '__main__':
